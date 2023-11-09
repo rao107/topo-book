@@ -1,0 +1,7 @@
+-- Introduction to Topology Third Edition by Bert Mendelson
+-- Chapter One: Theory of Sets
+--
+-- Formal Proofs of Exercises
+-- Author: Anirudh Rao
+--
+-- Section 8: Composition of Functions and Diagrams
