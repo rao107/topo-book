@@ -20,7 +20,7 @@ example : ∀ A : Set T, A ∈ 𝒫 A := by
 
 -- Uncomment code below to see Lean catch the false statement
 
---example (T : Type) : ∀ A : Set T, A ⊂ 𝒫 A := by
+--example (T : Type) : ∀ A : Set T, A ⊆ 𝒫 A := by
 --  sorry
 
 -- Question 1c)
@@ -34,7 +34,7 @@ example : ∀ A : Set T, ∅ ∈ 𝒫 A := by
   simp
 
 -- Question 1e)
-example : ∀ A : Set T, ∅ ⊂ 𝒫 A := by
+example : ∀ A : Set T, ∅ ⊆ 𝒫 A := by
   simp
 
 -- Question 1f)
@@ -42,23 +42,20 @@ example : Set.Nonempty {(∅ : Set T)} := by
   simp
 
 -- Question 1g)
--- if ⊆ instead of ⊂, very easy
-example (A B : Set T) : A ⊂ B → 𝒫 A ⊂ 𝒫 B := by
+example (A B : Set T) : A ⊆ B → 𝒫 A ⊆ 𝒫 B := by
   intro h
-  
-  sorry
-
-#check Set.powerset_mono
+  simp
+  exact h
 
 -- Question 1h)
--- is it possible for a set in Lean to contain multiple types?
-example : Set.Nontrivial { (∅ : Set T), {(∅ : Set T)} } := by
-  sorry
+example : Set.Nontrivial { (∅ : Set (Set T)), {(∅ : Set T)} } := by
+  unfold Set.Nontrivial
+  simp
 
 -- Question 2)
-example (A B C : Set T) : A ⊂ B → B ⊂ C → A ⊂ C := by
+example (A B C : Set T) : A ⊆ B → B ⊆ C → A ⊆ C := by
   intro h0 h1
-
+  
   sorry
 
 -- Question 3)
