@@ -21,22 +21,40 @@ example (A B : Set T) : A ⊆ B ↔ A ∩ B = A := by
 
 -- Question 1c)
 example (A B S : Set T) (h0 : A ⊆ S) (h1 : B ⊆ S) : A ⊆ Bᶜ ↔ A ∩ B = ∅ := by
-  
-  sorry
+  apply Iff.intro
+  {
+    intro h2
+    
+    sorry
+  }
+  {
+    intro h2
+    apply Disjoint.subset_compl_right
+    
+    sorry
+  }
+
+#check Set.subset_compl_iff_disjoint_right
 
 -- Question 1d)
 example (A B S : Set T) (h0 : A ⊆ S) (h1 : B ⊆ S) : Aᶜ ⊆ B ↔ A ∪ B = S := by
-  
-  sorry
+  apply Iff.intro
+  {
+    intro h2
+    sorry
+  }
+  {
+    intro h2
+    sorry
+  }
 
 -- Question 1e)
 example (A B : Set T) : A ⊆ B ↔ Bᶜ ⊆ Aᶜ := by
   simp
 
 -- Question 1f)
-example (A B S : Set T) (h0 : A ⊆ S) (h1 : B ⊆ S) : A ⊆ Bᶜ ↔ B ⊆ Aᶜ := by
-
-  sorry
+example (A B : Set T) : A ⊆ Bᶜ ↔ B ⊆ Aᶜ := by
+  apply Set.subset_compl_comm
 
 -- Question 2a)
 example (X Y Z : Set T) (h0 : X ⊆ Y) (h1: Y ⊆ Z) : (Y \ X) ⊂ (Z \ X) := by

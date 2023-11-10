@@ -43,9 +43,7 @@ example : Set.Nonempty {(∅ : Set T)} := by
 
 -- Question 1g)
 example (A B : Set T) : A ⊆ B → 𝒫 A ⊆ 𝒫 B := by
-  intro h
   simp
-  exact h
 
 -- Question 1h)
 example : Set.Nontrivial { (∅ : Set (Set T)), {(∅ : Set T)} } := by
@@ -54,9 +52,7 @@ example : Set.Nontrivial { (∅ : Set (Set T)), {(∅ : Set T)} } := by
 
 -- Question 2)
 example (A B C : Set T) : A ⊆ B → B ⊆ C → A ⊆ C := by
-  intro h0 h1
-  
-  sorry
+  apply subset_trans
 
 -- Question 3)
 -- i have no idea how to express this question
