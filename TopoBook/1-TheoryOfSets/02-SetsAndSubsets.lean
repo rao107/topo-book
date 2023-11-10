@@ -1,4 +1,4 @@
-import Mathlib.Init.Set
+import Mathlib.Data.Set.Basic
 
 -- Introduction to Topology Third Edition by Bert Mendelson
 -- Chapter One: Theory of Sets
@@ -11,53 +11,47 @@ import Mathlib.Init.Set
 def T := Type
 
 -- Question 1a)
-example : ∀ A : Set T, A ∈ Set.powerset A := by
+example : ∀ A : Set T, A ∈ 𝒫 A := by
   intro A
-  unfold Set.powerset
-  sorry
+  simp
+  apply subset_rfl
 
 -- Question 1b)
 
 -- Uncomment code below to see Lean catch the false statement
 
---example (T : Type) : ∀ A : Set T, A ⊂ Set.powerset A := by
+--example (T : Type) : ∀ A : Set T, A ⊂ 𝒫 A := by
 --  sorry
 
 -- Question 1c)
--- the original question uses ⊂ not ⊆ but Lean does not like ⊂ here?
-example : ∀ A : Set T, {A} ⊆ Set.powerset A := by
+example : ∀ A : Set T, {A} ⊂ 𝒫 A := by
   intro A
   unfold Set.powerset
-  
   sorry
 
 -- Question 1d)
-example : ∀ A : Set T, ∅ ∈ Set.powerset A := by
-  intro A
-  unfold Set.powerset
-  sorry
+example : ∀ A : Set T, ∅ ∈ 𝒫 A := by
+  simp
 
 -- Question 1e)
--- the original question uses ⊂ not ⊆ but Lean does not like ⊂ here?
-example : ∀ A : Set T, ∅ ⊆ Set.powerset A := by
-  sorry
+example : ∀ A : Set T, ∅ ⊂ 𝒫 A := by
+  simp
 
 -- Question 1f)
 example : ∃ A : Set T, A ∈ {∅} := by
   sorry
 
 -- Question 1g)
--- the original question uses ⊂ not ⊆ but Lean does not like ⊂ here?
-example (A B : Set T) : A ⊆ B → Set.powerset A ⊆ Set.powerset B := by
+example (A B : Set T) : A ⊂ B → 𝒫 A ⊂ 𝒫 B := by
+  intro h
   sorry
 
 -- Question 1h)
-example : ∃ A B : Set T, A ≠ B → A ∈ {∅, {∅}} → B ∈ {∅, {∅}} := by
+example : Set.Nontrivial {∅, {∅}} := by
   sorry
 
 -- Question 2)
--- the original question uses ⊂ not ⊆ but Lean does not like ⊂ here?
-example (A B C : Set T) : A ⊆ B → B ⊆ C → A ⊆ C := by
+example (A B C : Set T) : A ⊂ B → B ⊂ C → A ⊂ C := by
   intro h0 h1
   sorry
 

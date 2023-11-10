@@ -1,4 +1,4 @@
-import Mathlib.Init.Set
+import Mathlib.Data.Set.Basic
 
 -- Introduction to Topology Third Edition by Bert Mendelson
 -- Chapter One: Theory of Sets
@@ -11,41 +11,34 @@ import Mathlib.Init.Set
 def T := Type
 
 -- Question 1a)
--- the original question uses ⊂ not ⊆ but Lean does not like ⊂ here?
-example (A B S : Set T) (h0 : A ⊆ S) (h1 : B ⊆ S) : A ⊆ B ↔ A ∪ B = B := by
+example (A B S : Set T) (h0 : A ⊂ S) (h1 : B ⊂ S) : A ⊂ B ↔ A ∪ B = B := by
   sorry
 
 -- Question 1b)
--- the original question uses ⊂ not ⊆ but Lean does not like ⊂ here?
-example (A B S : Set T) (h0 : A ⊆ S) (h1 : B ⊆ S) : A ⊆ B ↔ A ∩ B = A := by
+example (A B S : Set T) (h0 : A ⊂ S) (h1 : B ⊂ S) : A ⊂ B ↔ A ∩ B = A := by
   sorry
 
 -- Question 1c)
--- the original question uses ⊂ not ⊆ but Lean does not like ⊂ here?
-example (A B S : Set T) (h0 : A ⊆ S) (h1 : B ⊆ S) : A ⊆ (univ \ B) ↔ A ∩ B = ∅ := by
+example (A B S : Set T) (h0 : A ⊂ S) (h1 : B ⊂ S) : A ⊆ Bᶜ ↔ A ∩ B = ∅ := by
   sorry
 
 -- Question 1d)
--- the original question uses ⊂ not ⊆ but Lean does not like ⊂ here?
-example (A B S : Set T) (h0 : A ⊆ S) (h1 : B ⊆ S) : (univ \ A) ⊆ B ↔ A ∪ B = S := by
+example (A B S : Set T) (h0 : A ⊂ S) (h1 : B ⊂ S) : Aᶜ ⊆ B ↔ A ∪ B = S := by
   sorry
 
 -- Question 1e)
--- the original question uses ⊂ not ⊆ but Lean does not like ⊂ here?
-example (A B S : Set T) (h0 : A ⊆ S) (h1 : B ⊆ S) : A ⊆ B ↔ (univ \ B) ⊆ (univ \ A) := by
+example (A B S : Set T) (h0 : A ⊂ S) (h1 : B ⊂ S) : A ⊂ B ↔ Bᶜ ⊆ Aᶜ := by
   sorry
 
 -- Question 1f)
--- the original question uses ⊂ not ⊆ but Lean does not like ⊂ here?
-example (A B S : Set T) (h0 : A ⊆ S) (h1 : B ⊆ S) : A ⊆ (univ \ B) ↔ B ⊆ (univ \ A) := by
+example (A B S : Set T) (h0 : A ⊂ S) (h1 : B ⊂ S) : A ⊂ Bᶜ ↔ B ⊂ Aᶜ := by
   sorry
 
 -- Question 2a)
--- the original question uses ⊂ not ⊆ but Lean does not like ⊂ here?
-example (X Y Z : Set T) (h0 : X ⊆ Y) (h1: Y ⊆ Z) : (Y \ X) ⊆ (Z \ X) := by
+example (X Y Z : Set T) (h0 : X ⊂ Y) (h1: Y ⊂ Z) : (Y \ X) ⊂ (Z \ X) := by
   sorry
 
 -- Question 2b)
 -- the original question uses ⊂ not ⊆ but Lean does not like ⊂ here?
-example (X Y Z : Set T) (h0 : X ⊆ Y) (h1: Y ⊆ Z) : Z \ (Y \ X) = X ∪ (Z \ Y) := by
+example (X Y Z : Set T) (h0 : X ⊂ Y) (h1: Y ⊂ Z) : Z \ (Y \ X) = X ∪ (Z \ Y) := by
   sorry
