@@ -20,33 +20,24 @@ example (A B : Set T) : A ⊆ B ↔ A ∩ B = A := by
   simp
 
 -- Question 1c)
-example (A B S : Set T) (h0 : A ⊆ S) (h1 : B ⊆ S) : A ⊆ Bᶜ ↔ A ∩ B = ∅ := by
+example (A B : Set T) : A ⊆ Bᶜ ↔ A ∩ B = ∅ := by
   apply Iff.intro
   {
-    intro h2
-    
-    sorry
+    intro h
+    apply Disjoint.inter_eq
+    apply Set.disjoint_left.mpr
+    apply h
   }
   {
-    intro h2
+    intro h
     apply Disjoint.subset_compl_right
-    
-    sorry
+    apply Set.disjoint_iff_inter_eq_empty.mpr
+    apply h
   }
-
-#check Set.subset_compl_iff_disjoint_right
 
 -- Question 1d)
-example (A B S : Set T) (h0 : A ⊆ S) (h1 : B ⊆ S) : Aᶜ ⊆ B ↔ A ∪ B = S := by
-  apply Iff.intro
-  {
-    intro h2
-    sorry
-  }
-  {
-    intro h2
-    sorry
-  }
+example (A B : Set T) : Aᶜ ⊆ B ↔ A ∪ B = Set.univ := by
+  apply Set.compl_subset_iff_union
 
 -- Question 1e)
 example (A B : Set T) : A ⊆ B ↔ Bᶜ ⊆ Aᶜ := by
@@ -57,11 +48,11 @@ example (A B : Set T) : A ⊆ Bᶜ ↔ B ⊆ Aᶜ := by
   apply Set.subset_compl_comm
 
 -- Question 2a)
-example (X Y Z : Set T) (h0 : X ⊆ Y) (h1: Y ⊆ Z) : (Y \ X) ⊂ (Z \ X) := by
-
-  sorry
+example (X Y Z : Set T) (h1: Y ⊆ Z) : (Y \ X) ⊆ (Z \ X) := by
+  apply Set.diff_subset_diff_left h1
 
 -- Question 2b)
 example (X Y Z : Set T) (h0 : X ⊆ Y) (h1: Y ⊆ Z) : Z \ (Y \ X) = X ∪ (Z \ Y) := by
-  
-  sorry
+  rw [Set.union_comm]
+  apply Set.diff_diff_eq_sdiff_union
+  apply subset_trans h0 h1

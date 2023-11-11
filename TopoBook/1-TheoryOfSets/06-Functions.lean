@@ -1,3 +1,5 @@
+import Mathlib.Data.Set.Basic
+
 -- Introduction to Topology Third Edition by Bert Mendelson
 -- Chapter One: Theory of Sets
 --
@@ -5,6 +7,10 @@
 -- Author: Anirudh Rao
 --
 -- Section 6: Functions
+
+def T := Type
+def A := Set T
+def B := Set T
 
 -- Question 1a)
 

@@ -1,3 +1,5 @@
+import Mathlib.Data.Set.Basic
+
 -- Introduction to Topology Third Edition by Bert Mendelson
 -- Chapter One: Theory of Sets
 --
@@ -5,6 +7,8 @@
 -- Author: Anirudh Rao
 --
 -- Section 4: Indexed Families of Sets
+
+def T := Type
 
 -- Question 1a)
 
@@ -19,6 +23,11 @@
 -- Question 1f)
 
 -- Question 2)
+example (A B D : Set T) : A ∩ (B ∪ D) = (A ∩ B) ∪ (A ∩ D) := by
+  apply Set.inter_distrib_left
+
+example (A B D : Set T) : A ∪ (B ∩ D) = (A ∪ B) ∩ (A ∪ D) := by
+  apply Set.union_inter_distrib_left
 
 -- Question 3a)
 
