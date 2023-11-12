@@ -1,4 +1,5 @@
 import Mathlib.Data.Set.Basic
+import Mathlib.Tactic.LibrarySearch
 
 -- Introduction to Topology Third Edition by Bert Mendelson
 -- Chapter One: Theory of Sets
@@ -19,40 +20,64 @@ example (A B : Set T) : A ⊆ B ↔ A ∩ B = A := by
   simp
 
 -- Question 1c)
--- in the original question, Bᶜ was (S - B). i did not understand
---   that S was not the universe. i should change this later
-example (A B : Set T) : A ⊆ Bᶜ ↔ A ∩ B = ∅ := by
+example (A B S : Set T) (h0 : A ⊆ S) (h1 : B ⊆ S) : A ⊆ (S \ B) ↔ A ∩ B = ∅ := by
   apply Iff.intro
   {
-    intro h
-    apply Disjoint.inter_eq
-    apply Set.disjoint_left.mpr
-    apply h
+    intro h2
+    sorry
   }
   {
-    intro h
-    apply Disjoint.subset_compl_right
-    apply Set.disjoint_iff_inter_eq_empty.mpr
-    apply h
+    intro h2
+    apply Set.subset_diff.mpr
+    apply (and_iff_right h0).mpr
+    apply Set.disjoint_iff_inter_eq_empty.mpr h2
   }
 
 -- Question 1d)
--- in the original question, Aᶜ was (S - A). i did not understand
---   that S was not the universe. i should change this later
-example (A B : Set T) : Aᶜ ⊆ B ↔ A ∪ B = Set.univ := by
-  apply Set.compl_subset_iff_union
+example (A B S : Set T) (h0 : A ⊆ S) (h1 : B ⊆ S) : (S \ A) ⊆ B ↔ A ∪ B = S := by
+  apply Iff.intro
+  {
+    intro h2
+    apply subset_antisymm_iff.mpr
+    apply (and_iff_left (Set.diff_subset_iff.mp h2)).mpr
+    apply Set.union_subset h0 h1
+  }
+  {
+    intro h2
+    apply Set.diff_subset_iff.mpr
+    apply Eq.subset (id h2.symm)
+  }
 
 -- Question 1e)
--- in the original question, Aᶜ was (S - A) and Bᶜ was (S - B).
---   i did not understand that S was not the universe. i should change this later
-example (A B : Set T) : A ⊆ B ↔ Bᶜ ⊆ Aᶜ := by
-  simp
+example (A B S : Set T) (h0 : A ⊆ S) (h1 : B ⊆ S) : A ⊆ B ↔ (S \ B) ⊆ (S \ A) := by
+  apply Iff.intro
+  {
+    intro h2
+    apply Set.diff_subset_diff_right h2
+  }
+  {
+    intro h2
+    sorry
+  }
 
 -- Question 1f)
 -- in the original question, Aᶜ was (S - A) and Bᶜ was (S - B).
 --   i did not understand that S was not the universe. i should change this later
-example (A B : Set T) : A ⊆ Bᶜ ↔ B ⊆ Aᶜ := by
-  apply Set.subset_compl_comm
+example (A B S : Set T) (h0 : A ⊆ S) (h1 : B ⊆ S) : A ⊆ (S \ B) ↔ B ⊆ (S \ A) := by
+  apply Iff.intro
+  {
+    intro h2
+    apply Set.subset_diff.mpr
+    apply (and_iff_right h1).mpr
+    sorry
+  }
+  {
+    intro h2
+    apply Set.subset_diff.mpr
+    apply (and_iff_right h0).mpr
+    apply Set.disjoint_iff.mpr
+    sorry
+  }
 
 -- Question 2a)
 example (X Y Z : Set T) (h1: Y ⊆ Z) : (Y \ X) ⊆ (Z \ X) := by
