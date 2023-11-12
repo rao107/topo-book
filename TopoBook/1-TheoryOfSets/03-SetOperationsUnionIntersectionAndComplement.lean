@@ -14,12 +14,13 @@ def T := Type
 example (A B : Set T) : A ⊆ B ↔ A ∪ B = B := by
   simp
 
-
 -- Question 1b)
 example (A B : Set T) : A ⊆ B ↔ A ∩ B = A := by
   simp
 
 -- Question 1c)
+-- in the original question, Bᶜ was (S - B). i did not understand
+--   that S was not the universe. i should change this later
 example (A B : Set T) : A ⊆ Bᶜ ↔ A ∩ B = ∅ := by
   apply Iff.intro
   {
@@ -36,14 +37,20 @@ example (A B : Set T) : A ⊆ Bᶜ ↔ A ∩ B = ∅ := by
   }
 
 -- Question 1d)
+-- in the original question, Aᶜ was (S - A). i did not understand
+--   that S was not the universe. i should change this later
 example (A B : Set T) : Aᶜ ⊆ B ↔ A ∪ B = Set.univ := by
   apply Set.compl_subset_iff_union
 
 -- Question 1e)
+-- in the original question, Aᶜ was (S - A) and Bᶜ was (S - B).
+--   i did not understand that S was not the universe. i should change this later
 example (A B : Set T) : A ⊆ B ↔ Bᶜ ⊆ Aᶜ := by
   simp
 
 -- Question 1f)
+-- in the original question, Aᶜ was (S - A) and Bᶜ was (S - B).
+--   i did not understand that S was not the universe. i should change this later
 example (A B : Set T) : A ⊆ Bᶜ ↔ B ⊆ Aᶜ := by
   apply Set.subset_compl_comm
 
