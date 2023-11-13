@@ -61,8 +61,6 @@ example (A B S : Set T) (h0 : A ⊆ S) (h1 : B ⊆ S) : A ⊆ B ↔ (S \ B) ⊆ 
   }
 
 -- Question 1f)
--- in the original question, Aᶜ was (S - A) and Bᶜ was (S - B).
---   i did not understand that S was not the universe. i should change this later
 example (A B S : Set T) (h0 : A ⊆ S) (h1 : B ⊆ S) : A ⊆ (S \ B) ↔ B ⊆ (S \ A) := by
   apply Iff.intro
   {
@@ -75,7 +73,6 @@ example (A B S : Set T) (h0 : A ⊆ S) (h1 : B ⊆ S) : A ⊆ (S \ B) ↔ B ⊆ 
     intro h2
     apply Set.subset_diff.mpr
     apply (and_iff_right h0).mpr
-    apply Set.disjoint_iff.mpr
     sorry
   }
 
