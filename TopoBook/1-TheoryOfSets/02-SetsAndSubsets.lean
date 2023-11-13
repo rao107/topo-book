@@ -56,5 +56,6 @@ example (A B C : Set T) : A ⊆ B → B ⊆ C → A ⊆ C := by
 
 -- Question 3)
 -- i have no idea how to express this question
-example (n : ℕ) : True := by
+example (n : ℕ) (A : ℕ → Set T) : ∀ i, A i ⊆ A (i + 1) ∧ A n ⊆ A 1 → ∀ i, A i = A 1 := by
+  intro i
   sorry
