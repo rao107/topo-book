@@ -24,7 +24,10 @@ example (A B S : Set T) (h0 : A ⊆ S) (h1 : B ⊆ S) : A ⊆ (S \ B) ↔ A ∩ 
   apply Iff.intro
   {
     intro h2
-    sorry
+    apply Set.eq_empty_iff_forall_not_mem.mpr
+    simp
+    intro x h3
+    apply Set.not_mem_of_mem_diff (h2 h3)
   }
   {
     intro h2
@@ -57,6 +60,7 @@ example (A B S : Set T) (h0 : A ⊆ S) (h1 : B ⊆ S) : A ⊆ B ↔ (S \ B) ⊆ 
   }
   {
     intro h2
+    
     sorry
   }
 
@@ -67,6 +71,7 @@ example (A B S : Set T) (h0 : A ⊆ S) (h1 : B ⊆ S) : A ⊆ (S \ B) ↔ B ⊆ 
     intro h2
     apply Set.subset_diff.mpr
     apply (and_iff_right h1).mpr
+    apply Set.disjoint_iff.mpr
     sorry
   }
   {
