@@ -20,7 +20,7 @@ Section 5: Products of Sets
   2/3 problems completed
 
 Section 6: Functions
-  0/19 problems completed
+  12/19 problems completed
 
 Section 7: Relations
   0/5 problems completed
