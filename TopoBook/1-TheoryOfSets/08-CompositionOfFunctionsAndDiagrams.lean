@@ -1,3 +1,6 @@
+import Mathlib.Data.Set.Image
+import Mathlib.Tactic.LibrarySearch
+
 -- Introduction to Topology Third Edition by Bert Mendelson
 -- Chapter One: Theory of Sets
 --
@@ -6,17 +9,17 @@
 --
 -- Section 8: Composition of Functions and Diagrams
 
+-- does mathlib4 have tools to express diagrams?
+-- a quick search yields results in category theory
+-- can these be used to formalize these exercises more thoroughly?
+
 -- Question 1)
--- this question does not require a proof
 
 -- Question 2)
 
--- proving x^2 + y^2 ≠ (x + y)^2
-
 -- Question 3)
 
--- proving if (gf) = i, g is onto, f is one-to-one
-
 -- Question 4)
-
--- proving (gf)^-1 = f^-1 g^-1
+example (A B C : Type) (f : A → B) (g : B → C) :
+  ∀ Z, (g ∘ f)⁻¹' Z = f⁻¹' (g⁻¹' Z) := by
+    exact fun Z ↦ rfl
