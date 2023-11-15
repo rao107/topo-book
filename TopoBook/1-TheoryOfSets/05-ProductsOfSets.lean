@@ -1,4 +1,5 @@
 import Mathlib.Data.Finset.Basic
+import Mathlib.Data.Finset.Card
 import Mathlib.Data.Finset.Prod
 import Mathlib.Data.Set.Basic
 import Mathlib.Tactic.LibrarySearch
@@ -11,9 +12,6 @@ import Mathlib.Tactic.LibrarySearch
 --
 -- Section 5: Products of Sets
 
-def S := Type
-def T := Type
-
 -- Question 1)
 -- This problem is incorrect. I cannot prove a statement that is not true so
 -- I will leave this here. You are welcome to uncomment below to understand.
@@ -23,10 +21,12 @@ def T := Type
 --  sorry
 
 -- Question 2)
-example (m n : ℕ) (A : Finset S) (B : Finset T) (h0 : Finset.card A = m) (h1 : Finset.card B = n) : Finset.card (A ×ˢ B) = n * m := by
-  simp
-  rw [h0, h1]
-  apply mul_comm
+example (m n : ℕ) (S T : Type) (A : Finset S) (B : Finset T)
+  (h0 : Finset.card A = m) (h1 : Finset.card B = n) :
+  Finset.card (A ×ˢ B) = n * m := by
+    simp
+    rw [h0, h1]
+    apply mul_comm
 
 -- Question 3)
 --idk how to express this
