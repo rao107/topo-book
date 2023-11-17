@@ -8,7 +8,7 @@ Completed!
 9/10 problems completed
 
 ### Section 3: Set Operations: Union, Intersection, and Complement
-6/8 problems completed
+Completed!
 
 ### Section 4: Indexed Families of Sets
 8/12 problems completed
