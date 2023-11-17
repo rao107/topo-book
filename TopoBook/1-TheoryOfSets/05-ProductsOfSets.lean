@@ -15,6 +15,8 @@ import Mathlib.Tactic.LibrarySearch
   This problem is incorrect. Instead, we prove that the statement is true
   if and only if either A or B is the universe
 -/
+-- it occurs to me that A ∪ B = Set.univ is a weaker iff condition that could
+-- still work... perhaps I can use that instead
 example (h0 : X ⊆ A) (h1 : Y ⊆ B) :
   A = Set.univ ∨ B = Set.univ ↔ (X ×ˢ Y)ᶜ = A ×ˢ Yᶜ ∪ Xᶜ ×ˢ B := by
     apply Iff.intro

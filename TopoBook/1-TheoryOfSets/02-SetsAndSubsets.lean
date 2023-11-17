@@ -1,4 +1,5 @@
 import Mathlib.Data.Set.Basic
+import Mathlib.Data.List.Range
 
 /-!
 # Introduction to Topology Third Edition by Bert Mendelson
@@ -53,6 +54,11 @@ example (A B C : Set T) : A ⊆ B → B ⊆ C → A ⊆ C := by
   apply subset_trans
 
 /- Question 3) -/
--- i have no idea how to express this question
-example (n : ℕ) (A : ℕ → Set T) : True := by
-  sorry
+example (A : ℕ → Set T) : ∀ i : Fin n, A i ⊆ A ((i + 1) % n) →
+  ∀ j k : Fin n, A j = A k := by
+    induction' n with n ih
+    · simp
+    {
+      
+      sorry
+    }

@@ -1,5 +1,4 @@
 import Mathlib.Data.Set.Basic
-import Mathlib.Tactic.LibrarySearch
 
 /-!
 # Introduction to Topology Third Edition by Bert Mendelson
