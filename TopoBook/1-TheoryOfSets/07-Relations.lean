@@ -1,23 +1,21 @@
 import Mathlib.Data.Set.Basic
 
--- Introduction to Topology Third Edition by Bert Mendelson
--- Chapter One: Theory of Sets
---
--- Formal Proofs of Exercises
--- Author: Anirudh Rao
---
--- Section 7: Relations
+/-!
+# Introduction to Topology Third Edition by Bert Mendelson
+## Chapter One: Theory of Sets
+### Section 6: Relations
+-/
 
--- Question 1)
+/- Question 1) -/
 
--- Question 2)
+/- Question 2) -/
 
--- Question 3)
-example (X : Type) (f : X → X) (h : Function.Injective f) : ∀ n : ℕ, Function.Injective (f^n) := by
+/- Question 3) -/
+example (f : X → X) (h : Function.Injective f) : ∀ n : ℕ, Function.Injective (f^n) := by
   sorry
 
 --another part here
 
--- Question 4)
+/- Question 4) -/
 
--- Question 5)
+/- Question 5) -/

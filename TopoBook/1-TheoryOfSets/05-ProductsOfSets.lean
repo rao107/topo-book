@@ -4,19 +4,18 @@ import Mathlib.Data.Finset.Prod
 import Mathlib.Data.Set.Basic
 import Mathlib.Tactic.LibrarySearch
 
--- Introduction to Topology Third Edition by Bert Mendelson
--- Chapter One: Theory of Sets
---
--- Formal Proofs of Exercises
--- Author: Anirudh Rao
---
--- Section 5: Products of Sets
+/-!
+# Introduction to Topology Third Edition by Bert Mendelson
+## Chapter One: Theory of Sets
+### Section 5: Products of Sets
+-/
 
--- Question 1)
--- This problem is incorrect. I cannot prove this statement but I can prove
--- an if and only if condition for this statement to be true.
-
-example (T : Type) (A B X Y : Set T) (h0 : X ⊆ A) (h1 : Y ⊆ B) :
+/- Question 1) -/
+/-
+  This problem is incorrect. Instead, we prove that the statement is true
+  if and only if either A or B is the universe
+-/
+example (h0 : X ⊆ A) (h1 : Y ⊆ B) :
   A = Set.univ ∨ B = Set.univ ↔ (X ×ˢ Y)ᶜ = A ×ˢ Yᶜ ∪ Xᶜ ×ˢ B := by
     apply Iff.intro
     {
@@ -80,17 +79,19 @@ example (T : Type) (A B X Y : Set T) (h0 : X ⊆ A) (h1 : Y ⊆ B) :
       }
     }
 
--- Question 2)
-example (m n : ℕ) (S T : Type) (A : Finset S) (B : Finset T)
-  (h0 : Finset.card A = m) (h1 : Finset.card B = n) :
+/- Question 2) -/
+example (h0 : Finset.card A = m) (h1 : Finset.card B = n) :
   Finset.card (A ×ˢ B) = n * m := by
     simp
     rw [h0, h1]
     apply mul_comm
 
--- Question 3)
+/- Question 3) -/
 --idk how to express this
---example (A B X Y : Set T) (h0 : Set.Nontrivial A) (h1 : Set.Nontrivial B) (h2 : X ⊆ A) (h3 : Y ⊆ B) : ∃ W : Set (T × T), W ⊆ A ×ˢ B ∧ ¬ W ⊆ X ×ˢ Y := by
---  sorry
+/-
+example (A B X Y : Set T) (h0 : Set.Nontrivial A) (h1 : Set.Nontrivial B)
+  (h2 : X ⊆ A) (h3 : Y ⊆ B) : ∃ W : Set (T × T), W ⊆ A ×ˢ B ∧ ¬ W ⊆ X ×ˢ Y := by
+  sorry
+-/
 
 
