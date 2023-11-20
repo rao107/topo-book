@@ -5,7 +5,7 @@
 Completed!
 
 ### Section 2: Metric Spaces
-0/8 problems completed
+4/8 problems completed
 
 ### Section 3: Continuity
 0/4 problems completed
