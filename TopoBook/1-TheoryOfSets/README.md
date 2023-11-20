@@ -11,7 +11,7 @@ Completed!
 Completed!
 
 ### Section 4: Indexed Families of Sets
-8/12 problems completed
+10/12 problems completed
 
 ### Section 5: Products of Sets
 2/3 problems completed

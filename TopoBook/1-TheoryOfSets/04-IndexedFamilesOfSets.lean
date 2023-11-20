@@ -1,3 +1,4 @@
+import Mathlib.Data.Real.Basic
 import Mathlib.Data.Set.Basic
 import Mathlib.Data.Set.Lattice
 import Mathlib.Tactic.LibrarySearch
@@ -28,9 +29,10 @@ example (A B : I → Set T) : ⋂ α, (A α ∩ B α) = (⋂ α, A α) ∩ (⋂ 
 
 /- Question 1e) -/
 example (A B : I → Set T) : ∀ β, A β ⊆ B β → ⋃ α, A α ⊆ ⋃ α, B α := by
-  intro β h
-
   sorry
+
+#check Set.subset_iUnion_of_subset
+#check Set.iUnion_mono
 
 example (A B : I → Set T) : ∀ β, A β ⊆ B β → ⋂ α, A α ⊆ ⋂ α, B α := by
   intro β h
@@ -51,8 +53,12 @@ example (A B D : Set T) : A ∪ (B ∩ D) = (A ∪ B) ∩ (A ∪ D) := by
   exact Set.union_inter_distrib_left
 
 /- Question 3a) -/
+example (I J : Set ι) (A : ι → Set T) (h : J ⊆ I) : ⋂ α ∈ J, A α ⊇ ⋂ α ∈ I, A α := by
+  exact Set.biInter_subset_biInter_left h
 
 /- Question 3b) -/
+example (I J : Set ι) (A : ι → Set T) (h : J ⊆ I) : ⋃ α ∈ J, A α ⊆ ⋃ α ∈ I, A α := by
+  exact Set.biUnion_subset_biUnion_left h
 
 /- Question 4a) -/
 example (A : I → Set T) (B : Set T) : B ⊆ ⋂ α, A α ↔ ∀ β, B ⊆ A β := by
@@ -63,3 +69,4 @@ example (A : I → Set T) (B : Set T) : ⋃ α, A α ⊆ B ↔ ∀ β, A β ⊆ 
   exact Set.iUnion_subset_iff
 
 /- Question 5) -/
+--idk how to express this
