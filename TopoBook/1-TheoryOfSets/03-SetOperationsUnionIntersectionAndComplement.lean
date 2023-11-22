@@ -8,11 +8,11 @@ import Mathlib.Data.Set.Basic
 
 /- Question 1a) -/
 example (A B : Set T) : A ⊆ B ↔ A ∪ B = B := by
-  simp
+  simp only [Set.union_eq_right]
 
 /- Question 1b) -/
 example (A B : Set T) : A ⊆ B ↔ A ∩ B = A := by
-  simp
+  simp only [Set.inter_eq_left]
 
 /- Question 1c) -/
 example (A B : Set T) : A ⊆ Bᶜ ↔ A ∩ B = ∅ := by

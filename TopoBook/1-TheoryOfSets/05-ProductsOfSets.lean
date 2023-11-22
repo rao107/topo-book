@@ -15,8 +15,6 @@ import Mathlib.Tactic.LibrarySearch
   This problem is incorrect. Instead, we prove that the statement is true
   if and only if either A or B is the universe
 -/
--- it occurs to me that A ∪ B = Set.univ is a weaker iff condition that could
--- still work... perhaps I can use that instead
 example (h0 : X ⊆ A) (h1 : Y ⊆ B) :
   A = Set.univ ∨ B = Set.univ ↔ (X ×ˢ Y)ᶜ = A ×ˢ Yᶜ ∪ Xᶜ ×ˢ B := by
     apply Iff.intro
@@ -29,21 +27,22 @@ example (h0 : X ⊆ A) (h1 : Y ⊆ B) :
       rcases h2 with h2.l | h2.r
       {
         rw [h2.l]
-        simp
+        simp only [Set.compl_univ, Set.empty_prod, Set.union_empty,
+          Set.union_eq_left]
         apply Set.subset_union_of_subset_left
         apply Set.prod_mono
-        · simp
-        · simp; apply h1
+        · simp only [Set.subset_univ]
+        · simp only [Set.compl_subset_compl]; apply h1
       }
       {
         rw [h2.r]
-        simp
+        simp only [Set.compl_univ, Set.prod_empty, Set.union_empty]
         rw [Set.union_assoc, Set.union_left_comm]
-        simp
+        simp only [Set.union_eq_right]
         apply Set.subset_union_of_subset_right
         apply Set.prod_mono
-        · simp; apply h0
-        · simp
+        · simp only [Set.compl_subset_compl]; apply h0
+        · simp only [Set.subset_univ]
       }
     }
     {
@@ -53,15 +52,17 @@ example (h0 : X ⊆ A) (h1 : Y ⊆ B) :
       rw [Set.union_prod, Set.prod_union, ← Set.union_assoc,
         Set.union_right_comm (A ×ˢ Yᶜ) (Aᶜ ×ˢ Yᶜ) (Xᶜ ×ˢ B),
         Set.union_assoc]
-      simp
+      simp only [Set.union_eq_left, Set.union_subset_iff, and_imp]
       intro h2 h3
       have h4 : Disjoint (Aᶜ ×ˢ Yᶜ) (A ×ˢ Yᶜ) := by
-        simp; left; exact disjoint_compl_left
+        simp only [Set.disjoint_prod, disjoint_self, Set.bot_eq_empty,
+          Set.compl_empty_iff]; left; exact disjoint_compl_left
       have h5 : (Aᶜ ×ˢ Yᶜ) ⊆ (Xᶜ ×ˢ B) := by
         exact Disjoint.subset_right_of_subset_union h2 h4
       have h6 : (Aᶜ ⊆ Xᶜ ∧ Yᶜ ⊆ B) ∨ Aᶜ = ∅ ∨ Yᶜ = ∅ := by
         exact Set.prod_subset_prod_iff.mp h5
-      simp_all
+      simp_all only [Set.disjoint_prod, disjoint_self, Set.bot_eq_empty,
+        Set.compl_empty_iff, Set.compl_subset_compl, true_and, h0]
       rcases h6 with h6.l | h6.r
       {
         have h7 : Bᶜ ⊆ Y := by
@@ -70,7 +71,7 @@ example (h0 : X ⊆ A) (h1 : Y ⊆ B) :
           tauto
         have h9 : B ∩ Bᶜ = Bᶜ := by
           exact Set.inter_eq_right.mpr h8
-        simp_all
+        simp_all only [Set.inter_compl_self]
         right
         exact Set.compl_empty_iff.mp (id h9.symm)
       }
@@ -84,7 +85,7 @@ example (h0 : X ⊆ A) (h1 : Y ⊆ B) :
 /- Question 2) -/
 example (h0 : Finset.card A = m) (h1 : Finset.card B = n) :
   Finset.card (A ×ˢ B) = n * m := by
-    simp
+    simp only [Finset.card_product]
     rw [h0, h1]
     apply mul_comm
 

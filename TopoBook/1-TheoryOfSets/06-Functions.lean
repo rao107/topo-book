@@ -57,7 +57,7 @@ example (Y : I → Set B) : f⁻¹' ⋂ α, Y α = ⋂ α, f⁻¹' Y α := by
 
 /- Question 4c) -/
 example : f⁻¹' (Xᶜ) = (f⁻¹' X)ᶜ := by
-  simp
+  simp only [Set.preimage_compl]
 
 /- Question 4d) -/
 example : f '' (X ∩ f⁻¹' Y) = f '' X ∩ Y := by
@@ -73,5 +73,5 @@ example : f '' (X ∩ f⁻¹' Y) = f '' X ∩ Y := by
 
 /- Question 8) -/
 example (h : Finset.card A = n) : Finset.card (Finset.powerset A) = 2^n := by
-  simp
+  simp only [Finset.card_powerset]
   rw [h]
