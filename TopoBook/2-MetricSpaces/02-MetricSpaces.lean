@@ -7,30 +7,29 @@ import Mathlib
 -/
 
 /- Question 1 -/
-example (k : ℝ) (X : MetricSpace T) (dₖ : T → T → ℝ)
-  (h0 : ∀ x y, dₖ x y = k * X.dist x y) (h1 : k > 0) : dₖ x y ≥ 0 := by
-  rw [h0]
-  simp_all
-  exact dist_nonneg
+def dₖ (k : ℝ) (X : MetricSpace T) (x y : T) : ℝ := k * X.dist x y
+example (h : k > 0) : dₖ k X x y ≥ 0 := by
+    unfold dₖ
+    simp_all only [zero_le_mul_left]
+    exact dist_nonneg
 
-example (k : ℝ) (X : MetricSpace T) (dₖ : T → T → ℝ)
-  (h0 : ∀ x y, dₖ x y = k * X.dist x y) (h1 : k > 0) : dₖ x y = 0 ↔ x = y := by
-  rw [h0]
-  apply Iff.intro
-  · intro h2; simp_all; rcases h2 with ha | hb
-    · simp_all
-    · exact hb
-  · intro h2; simp_all
+example (h : k > 0) : dₖ k X x y = 0 ↔ x = y := by
+    unfold dₖ
+    apply Iff.intro
+    · intro h2; simp_all only [mul_eq_zero, dist_eq_zero];
+        rcases h2 with ha | hb
+      · simp_all only [lt_self_iff_false]
+      · exact hb
+    · intro h2; simp_all only [dist_self, mul_zero]
 
-example (k : ℝ) (X : MetricSpace T) (dₖ : T → T → ℝ)
-  (h0 : ∀ x y, dₖ x y = k * X.dist x y) (h1 : k > 0) : dₖ x y = dₖ y x := by
-  rw [h0, h0]; simp; left; apply dist_comm
+example (h : k > 0) : dₖ k X x y = dₖ k X y x := by
+    unfold dₖ; simp only [mul_eq_mul_left_iff]; left; apply dist_comm
 
-example (k : ℝ) (X : MetricSpace T) (dₖ : T → T → ℝ)
-  (h0 : ∀ x y, dₖ x y = k * X.dist x y) (h1 : k > 0) : dₖ x z ≤ dₖ x y + dₖ y z := by
-  rw [h0, h0, h0, ← mul_add]
-  apply (mul_le_mul_left h1).mpr
-  exact dist_triangle x y z
+example (h1 : k > 0) : dₖ k X x z ≤ dₖ k X x y + dₖ k X y z := by
+    unfold dₖ
+    rw [← mul_add]
+    apply (mul_le_mul_left h1).mpr
+    exact dist_triangle x y z
 
 /- Question 2 -/
 
@@ -54,50 +53,19 @@ example (k : ℝ) (X : MetricSpace T) (dₖ : T → T → ℝ)
 -/
 
 /- Question 7 -/
-example (d : X → X → ℝ) (h0 : ∀ x, d x x = 0)
-  (h1 : ∀ x y, x ≠ y → d x y = 1) : d x y ≥ 0 := by
-    by_cases h : x = y
-    · rw [h, h0]
-    · rw [h1]
-      · simp
-      · exact h
+def d (x y : X) : ℝ := if x = y then 0 else 1
+example : d x y ≥ 0 := by
+    rfl
 
-example (d : X → X → ℝ) (h0 : ∀ x, d x x = 0)
-  (h1 : ∀ x y, x ≠ y → d x y = 1) : d x y = 0 ↔ x = y := by
-    apply Iff.intro
-    · by_contra h2; simp_all
-    · intro _; apply h0
+example : d x y = 0 ↔ x = y := by
+    unfold d
+    simp only [ite_true]
 
-example (d : X → X → ℝ) (h0 : ∀ x, d x x = 0)
-  (h1 : ∀ x y, x ≠ y → d x y = 1) : d x y = d y x := by
-  by_cases h : x = y
-  · rw [h]
-  · rw [h1, h1]
-    · apply Not.intro; intro h2; rw [h2] at h; simp at h
-    · apply Not.intro; intro h2; rw [h2] at h; simp at h
+example : d x y = d y x := by
+  rfl
 
-example (d : X → X → ℝ) (h0 : ∀ x, d x x = 0)
-  (h1 : ∀ x y, x ≠ y → d x y = 1) : d x z ≤ d x y + d y z := by
-  by_cases h2 : x = z
-  · rw [h2, h0]; by_cases h3 : y = z
-    · rw [h3, h0]; simp
-    · rw [h1]
-      · rw [h1]
-        · simp
-        · exact h3
-      · apply Not.intro; intro h4; rw [h4] at h3; simp at h3
-  · rw [h1]
-    · by_cases h3 : x = y
-      · rw [h3, h0, ← h3, h1]
-        · simp
-        · exact h2
-      · rw [h1]
-        · simp; by_cases h4 : y = z
-          · rw [h4, h0]
-          · rw [h1]
-            · simp
-            · exact h4
-        · exact h3
-    · exact h2
+example : d x z ≤ d x y + d y z := by
+  unfold d
+  simp only [ite_true, add_zero, le_refl]
   
 /- Question 8 -/
