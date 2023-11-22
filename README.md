@@ -6,7 +6,7 @@ Proofs of exercises using Lean 4
 40/69 problems completed
 
 ### Chapter 2: Metric Spaces
-0/46 problems completed
+4/46 problems completed
 
 ### Chapter 3: Topological Spaces
 0/53 problems completed
