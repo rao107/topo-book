@@ -3,7 +3,7 @@
 Proofs of exercises using Lean 4
 
 ### Chapter 1: Theory of Sets
-40/69 problems completed
+41/69 problems completed
 
 ### Chapter 2: Metric Spaces
 4/46 problems completed

@@ -7,14 +7,16 @@ import Mathlib
 -/
 
 /- Question 1 -/
-def dₖ (k : ℝ) (X : MetricSpace T) (x y : T) : ℝ := k * X.dist x y
-example (h : k > 0) : dₖ k X x y ≥ 0 := by
+def dₖ (k : { x : ℝ // x > 0}) (X : MetricSpace T) (x y : T) : ℝ := k * X.dist x y
+example : dₖ k X x y ≥ 0 := by
     unfold dₖ
+    obtain ⟨k, hk⟩ := k
     simp_all only [zero_le_mul_left]
     exact dist_nonneg
 
-example (h : k > 0) : dₖ k X x y = 0 ↔ x = y := by
+example : dₖ k X x y = 0 ↔ x = y := by
     unfold dₖ
+    obtain ⟨k, hk⟩ := k
     apply Iff.intro
     · intro h2; simp_all only [mul_eq_zero, dist_eq_zero];
         rcases h2 with ha | hb
@@ -22,13 +24,14 @@ example (h : k > 0) : dₖ k X x y = 0 ↔ x = y := by
       · exact hb
     · intro h2; simp_all only [dist_self, mul_zero]
 
-example (h : k > 0) : dₖ k X x y = dₖ k X y x := by
+example : dₖ k X x y = dₖ k X y x := by
     unfold dₖ; simp only [mul_eq_mul_left_iff]; left; apply dist_comm
 
-example (h1 : k > 0) : dₖ k X x z ≤ dₖ k X x y + dₖ k X y z := by
+example : dₖ k X x z ≤ dₖ k X x y + dₖ k X y z := by
     unfold dₖ
+    obtain ⟨k, hk⟩ := k
     rw [← mul_add]
-    apply (mul_le_mul_left h1).mpr
+    apply (mul_le_mul_left hk).mpr
     exact dist_triangle x y z
 
 /- Question 2 -/

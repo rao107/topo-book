@@ -66,8 +66,29 @@ example : f '' (X ∩ f⁻¹' Y) = f '' X ∩ Y := by
 /- Question 5) -/
 
 /- Question 6) -/
+namespace q6
+
+def A := Type
+def B := Type
+def j (b : B) : A → A × B := fun a ↦ (a, b)
+
+example : Function.Injective (j b) := by
+  intro a₁ a₂
+  unfold j
+  simp only [Prod.mk.injEq, and_true, imp_self]
+
+example : ∃ jbW, (j b)⁻¹' W = jbW := by
+  exists {x | (x, b) ∈ W}
+
+end q6
 
 /- Question 7a) -/
+namespace q7
+
+def A := Type
+--def χ (E : Set A) : A → ℕ := fun x ↦ (if x ∈ E then 1 else 0)
+
+end q7
 
 /- Question 7b) -/
 

@@ -16,6 +16,7 @@ example : ¬ContinuousAt (f a) a := by
   sorry
 
 example : a ≠ b → ContinuousAt (f a) b := by
+  intro h
   sorry
 
 /- Question 3 -/

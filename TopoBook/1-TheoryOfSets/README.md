@@ -17,7 +17,7 @@ Completed!
 2/3 problems completed
 
 ### Section 6: Functions
-12/19 problems completed
+13/19 problems completed
 
 ### Section 7: Relations
 0/5 problems completed
