@@ -8,7 +8,7 @@ Completed!
 4/8 problems completed
 
 ### Section 3: Continuity
-0/4 problems completed
+2/4 problems completed
 
 ### Section 4: Open Balls and Neighborhoods
 0/8 problems completed
