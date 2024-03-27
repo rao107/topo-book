@@ -12,8 +12,9 @@ import Mathlib.Tactic.LibrarySearch
 
 /- Question 1) -/
 /-
-  This problem is incorrect. Instead, we prove that the statement is true
-  if and only if either A or B is Set.univ
+  This problem is weird. The problem seems to rely on C(X) to be A - X which is not very obvious.
+  I've prefered using the definition of complements used in Mathlib so I will instead show that
+  the statement still holds as long as either A = Set.univ or B = Set.univ.
 -/
 
 -- This lemma is needed as part of the proof of
