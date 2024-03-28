@@ -2,7 +2,7 @@
 ## Chapter 5: Compactness
 
 ### Section 1: Introduction
-Completed!
+0/0 problems completed
 
 ### Section 2: Compact Topological Spaces
 0/6 problems completed

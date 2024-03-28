@@ -7,13 +7,15 @@ import Mathlib.Data.List.Range
 ### Section 2: Sets and subsets
 -/
 
-/- Question 1a) -/
+/- Question 1 -/
+
+/- Part a) -/
 example : ∀ A : Set T, A ∈ 𝒫 A := by
   intro A
   simp only [Set.mem_powerset_iff]
   apply subset_rfl
 
-/- Question 1b) -/
+/- Part b) -/
 
 /- Uncomment code below to see Lean catch the false statement -/
 
@@ -22,29 +24,29 @@ example : ∀ A : Set T, A ⊆ 𝒫 A := by
   sorry
 -/
 
-/- Question 1c) -/
+/- Part c) -/
 example : ∀ A : Set T, {A} ⊆ 𝒫 A := by
   intro A
   simp only [Set.singleton_subset_iff, Set.mem_powerset_iff]
   apply subset_rfl
 
-/- Question 1d) -/
+/- Part d) -/
 example : ∀ A : Set T, ∅ ∈ 𝒫 A := by
   simp only [Set.mem_powerset_iff, Set.empty_subset, forall_const]
 
-/- Question 1e) -/
+/- Part e) -/
 example : ∀ A : Set T, ∅ ⊆ 𝒫 A := by
   simp only [Set.empty_subset, forall_const]
 
-/- Question 1f) -/
+/- Part f) -/
 example : Set.Nonempty {(∅ : Set T)} := by
   simp only [Set.singleton_nonempty]
 
-/- Question 1g) -/
+/- Part g) -/
 example : A ⊆ B → 𝒫 A ⊆ 𝒫 B := by
   simp only [Set.powerset_mono, imp_self]
 
-/- Question 1h) -/
+/- Part h) -/
 example : Set.Nontrivial { (∅ : Set (Set T)), {∅} } := by
   unfold Set.Nontrivial
   simp only [Set.mem_singleton_iff, Set.mem_insert_iff, ne_eq,
@@ -61,6 +63,6 @@ example (A : ℕ → Set T) : ∀ i : Fin n, A i ⊆ A ((i + 1) % n) →
     induction' n with n ih
     · simp only [Nat.zero_eq, Nat.mod_zero, IsEmpty.forall_iff, implies_true]
     {
-      
+
       sorry
     }

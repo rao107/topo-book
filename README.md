@@ -2,11 +2,13 @@
 
 Proofs of exercises using Lean 4
 
+[Link to text](https://archive.org/details/introduction-to-topology-by-mendelson-bert/)
+
 ### Chapter 1: Theory of Sets
-41/69 problems completed
+16/38 problems completed
 
 ### Chapter 2: Metric Spaces
-4/46 problems completed
+6/46 problems completed
 
 ### Chapter 3: Topological Spaces
 0/53 problems completed
@@ -16,3 +18,7 @@ Proofs of exercises using Lean 4
 
 ### Chapter 5: Compactness
 0/35 problems completed
+
+**This repository is a work in progress!**
+
+Many problems are not only incomplete but have not been properly expressed in Lean. Any contributions to come closer to solving all these problems are always very welcome.

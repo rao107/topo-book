@@ -37,7 +37,7 @@ example : dₖ k X x z ≤ dₖ k X x y + dₖ k X y z := by
 /- Question 2 -/
 
 /-
-  This problem does not require a proof. The set of points x such that
+  This problem does not require a formal proof. The set of points x such that
   d''(x, a) ≤ 1 for a ∈ ℝ² looks like a square rotated 45° centered at a
 -/
 
@@ -50,7 +50,7 @@ example : dₖ k X x z ≤ dₖ k X x y + dₖ k X y z := by
 /- Question 6 -/
 
 /-
-  This problem does not require a proof. The distance function d represents the
+  This problem does not require a formal proof. The distance function d represents the
   area between f and g while the distance function d' represents the maximum
   difference between f and g at any point between a and b.
 -/
@@ -70,5 +70,5 @@ example : d x y = d y x := by
 example : d x z ≤ d x y + d y z := by
   unfold d
   simp only [ite_true, add_zero, le_refl]
-  
+
 /- Question 8 -/

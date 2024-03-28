@@ -2,22 +2,22 @@
 ## Chapter One: Theory of Sets
 
 ### Section 1: Introduction
-Completed!
+0/0 problems completed
 
 ### Section 2: Sets and Subsets
-9/10 problems completed
+2/3 problems completed
 
 ### Section 3: Set Operations: Union, Intersection, and Complement
-Completed!
+2/2 problems completed
 
 ### Section 4: Indexed Families of Sets
-10/12 problems completed
+4/5 problems completed
 
 ### Section 5: Products of Sets
 2/3 problems completed
 
 ### Section 6: Functions
-13/19 problems completed
+5/8 problems completed
 
 ### Section 7: Relations
 0/5 problems completed

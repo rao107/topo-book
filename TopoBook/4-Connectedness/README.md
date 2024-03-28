@@ -2,7 +2,7 @@
 ## Chapter 4: Connectedness
 
 ### Section 1: Introduction
-Completed!
+0/0 problems completed
 
 ### Section 2: Connectedness
 0/5 problems completed
