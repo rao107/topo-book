@@ -11,7 +11,7 @@ import Mathlib
 /- Question 2 -/
 def T := Type
 def X := MetricSpace T
---noncomputable def X.dist (x y : T) := if x = y then 0 else 1
+noncomputable def X.dist (x y : T) [Decidable (x = y)] := if x = y then 0 else 1
 
 /- Question 3 -/
 

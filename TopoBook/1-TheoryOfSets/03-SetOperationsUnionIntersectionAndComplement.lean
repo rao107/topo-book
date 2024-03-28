@@ -8,6 +8,13 @@ import Mathlib.Data.Set.Basic
 
 /- Question 1 -/
 
+/-!
+  The author's intention behind the complement of sets in this question was to
+  take the complement with respect to a set S. Here, we decide to let S be the
+  universal set. However, contributions to turn all Aᶜ and Bᶜ into S \ A and
+  S \ B respectively are welcome.
+-/
+
 /- Part a) -/
 example (A B : Set T) : A ⊆ B ↔ A ∪ B = B := by
   simp only [Set.union_eq_right]

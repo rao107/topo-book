@@ -13,10 +13,14 @@ def d (x y : X) : ℝ := if x = y then 0 else 1
 noncomputable def f (a : ℝ) : ℝ → ℝ := fun x ↦ if x ≤ a then 0 else 1
 
 example : ¬ContinuousAt (f a) a := by
+  unfold f ContinuousAt Filter.Tendsto
+  simp only [le_refl, ite_true]
   sorry
 
 example : a ≠ b → ContinuousAt (f a) b := by
   intro h
+  unfold f ContinuousAt Filter.Tendsto
+  simp
   sorry
 
 /- Question 3 -/
